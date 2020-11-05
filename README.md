@@ -1,5 +1,3 @@
-# hybridFLT
----
 This repository contains a runtime adapter added to the ECCO implementation to perform a hybrid feature location technique (dynamic and static analysis).
 ---
 Get the code: `git clone` or download zip file into `<working_dir>`.
