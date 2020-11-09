@@ -347,9 +347,9 @@ public class RuntimeModuleTest {
 
     @Test(groups = {"integration", "runtime"})
     public void Analyze_Differences() throws IOException {
-        Path GT_PATH = BENCHMARK_DIR.resolve("groundTruth");
+        Path GT_PATH = BENCHMARK_DIR.resolve("C:\\Users\\gabil\\Desktop\\teste\\ActualECCO\\Method_Comparison\\Notepad\\test_method\\gt\\featuresANDbase");
         //Path MY_PATH = BENCHMARK_DIR.resolve("yourResults");
-        Path MY_PATH = SCENARIO_OUTPUT_DIR.resolve("results");
+        Path MY_PATH = SCENARIO_OUTPUT_DIR.resolve("C:\\Users\\gabil\\Desktop\\teste\\ActualECCO\\Method_Comparison\\Notepad\\test_method\\fl");
 
         Set<Path> myFiles = Files.list(MY_PATH).map(Path::getFileName).filter(path -> path.toString().endsWith(".txt")).collect(Collectors.toSet());
         Set<Path> groundTruthFiles = Files.list(GT_PATH).map(Path::getFileName).filter(path -> path.toString().endsWith(".txt")).collect(Collectors.toSet());
@@ -381,14 +381,19 @@ public class RuntimeModuleTest {
                 System.out.println("THERE ARE DUPLICATE LINES IN MY FILE " + commonFile);
 
             Set<String> onlyMyEntries = new HashSet<>(MyEntries);
+            int total=onlyMyEntries.size();
             onlyMyEntries.removeAll(GTEntries);
             Set<String> onlyGTEntries = new HashSet<>(GTEntries);
             onlyGTEntries.removeAll(MyEntries);
-
-            System.out.println("ENTRIES ONLY IN MY FILE:");
-            onlyMyEntries.forEach(System.out::println);
-            System.out.println("ENTRIES ONLY IN GT FILE:");
-            onlyGTEntries.forEach(System.out::println);
+            //System.out.println("RESULTS ");
+            System.out.println("FP "+onlyMyEntries.size());
+            System.out.println("FN "+onlyGTEntries.size());
+            System.out.println("Total "+total);
+            System.out.println("TP "+String.valueOf(total-onlyMyEntries.size()));
+            //System.out.println("ENTRIES ONLY IN MY FILE:");
+            //onlyMyEntries.forEach(System.out::println);
+            //System.out.println("ENTRIES ONLY IN GT FILE:");
+            //onlyGTEntries.forEach(System.out::println);
         }
     }
 
